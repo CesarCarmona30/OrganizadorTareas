@@ -9,16 +9,12 @@ Una aplicación simple e interactiva para organizar tareas, construida con Pytho
 - Filtrar tareas por categoría.
 - Almacenamiento persistente de tareas usando un archivo JSON.
 
----
-
 ## Requisitos previos
 
 Asegúrate de tener lo siguiente instalado en tu sistema:
 
 - **Python 3.10 o superior**
 - **Tkinter** (incluido con Python)
-
----
 
 ## Instalación y Ejecución
 
