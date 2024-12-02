@@ -1,6 +1,6 @@
 # Organizador de Tareas
 
-Una aplicación simple e interactiva para organizar tareas, construida con Python y Tkinter. Esta aplicación te permite gestionar tus tareas añadiendo, editando y eliminandolas (CRUD sencillo). Las tareas se almacenan en un archivo JSON para garantizar persistencia.
+Una aplicación simple e interactiva para organizar tareas, construida con Python y Tkinter. Esta aplicación permite gestionar tareas añadiendo, editando y eliminandolas (CRUD sencillo). Las tareas se almacenan en un archivo JSON para garantizar persistencia.
 
 ## Funcionalidades
 
