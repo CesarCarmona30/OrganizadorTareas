@@ -21,8 +21,8 @@ Asegúrate de tener lo siguiente instalado en tu sistema:
 1. Clona el repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/tu-usuario/organizador-de-tareas.git
-   cd organizador-de-tareas
+   git clone https://github.com/CesarCarmona30/OrganizadorTareas.git
+   cd OrganizadorTareas
    ```
 
 2. (Opcional) Verifica que las dependencias estén instaladas (no se necesitan paquetes externos).
