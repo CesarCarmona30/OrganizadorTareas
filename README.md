@@ -45,12 +45,10 @@ Asegúrate de tener lo siguiente instalado en tu sistema:
   OrganizadorTareas/
   ├── main.py              # Punto de entrada de la aplicación
   ├── gui/                 # Componentes de la interfaz de usuario
-  │   ├── __init__.py      # Convierte la carpeta en un paquete de Python
   │   ├── styles.py        # Colores, fuentes y estilos
   │   ├── ui.py            # Configuración de diseño y widgets
   ├── core/                # Funcionalidad principal y lógica
-  │   ├── __init__.py      # Convierte la carpeta en un paquete de Python
-  │   └── logic.py         # Validación de tareas, guardado y carga
+  │   └── tasks.py         # Validación de tareas, guardado y carga
   ├── data/                # Almacenamiento persistente
   │   └── tasks.json       # Archivo JSON para almacenar tareas
   └── README.md            # Documentación del proyecto
