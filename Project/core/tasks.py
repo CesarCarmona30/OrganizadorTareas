@@ -12,7 +12,7 @@ def validate_date(date):
     except ValueError:
         return False
 
-def load_tasks(treeview):
+def read_tasks(treeview):
     """Carga las tareas desde el archivo JSON."""
     try:
         with open(FILE_NAME, "r", encoding="utf-8") as file:

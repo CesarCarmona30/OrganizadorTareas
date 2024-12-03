@@ -2,18 +2,17 @@ from enum import Enum
 
 # Estilos visuales para la interfaz
 class Colors(Enum):
-    BACKGROUND = "#00843D"
-    TEXT = "#000000"
-    BUTTON = "#EEEF20"
-    BUTTON_HOVER = "#000000"
-    FILTER = "#98C379"
-    ALERT = "#EEEF20"
-    LIST_BACKGROUND = "#eff1ed"
+    BACKGROUND = "#24272b"
+    TEXT = "#FFFFFF"
+    BUTTON = "#61AFEF"
+    BUTTON_HOVER = "#56B4E9"
+    ALERT = "#d62839"
+    LIST_BACKGROUND = "#4a525a"
 
 class Fonts(Enum):
-    TITLE = ("Arial", 20, "bold")
-    TEXT = ("Arial", 12)
-    BUTTON = ("Arial", 12, "bold")
+    TITLE = ("Bahnschrift", 20, "bold")
+    TEXT = ("Trebuchet MS", 12)
+    BUTTON = ("Bahnschrift", 12, "bold")
 
 class Categories(Enum):
     ALL = ""

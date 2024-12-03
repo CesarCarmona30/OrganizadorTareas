@@ -4,16 +4,28 @@ from tkinter.simpledialog import askstring
 from gui.styles import Colors, Fonts, Categories
 from core.tasks import save_tasks, validate_date
 
-def delete_task(treeview):
-    """Elimina la tarea seleccionada"""
-    try:
-        selected_item = treeview.selection()[0]
-        confirm = messagebox.askyesno("Confirmación", "¿Estás seguro de querer elimnar esta tarea?")
-        if confirm:
-            treeview.delete(selected_item)
-            save_tasks(treeview)
-    except IndexError:
-        messagebox.showwarning("Sin selección", "Por favor, selecciona una tarea para eliminar.")
+def create_task(entries, treeview):
+    """Crea y añade una nueva tarea a la lista."""
+    title = entries["titulo"].get().strip()
+    category = entries["categoria"].get().strip()
+    notes = entries["notas"].get("1.0", tk.END).strip()
+    date = entries["fecha"].get().strip()
+
+    if not title or not category or not date:
+        messagebox.showwarning("Campos vacíos", "Título, categoría y fecha son obligatorios.")
+        return
+
+    if not validate_date(date):
+        messagebox.showwarning("Fecha inválida", "La fecha debe estar en el formato dd/mm.")
+        return
+
+    treeview.insert("", "end", values=(title, category, notes, date))
+    for entry in entries.values():
+        if isinstance(entry, tk.Text):
+            entry.delete("1.0", tk.END)
+        else:
+            entry.delete(0, tk.END)
+    save_tasks(treeview)
 
 def update_task(treeview):
     """Editar la tarea seleccionada."""
@@ -21,7 +33,7 @@ def update_task(treeview):
         selected_item = treeview.selection()[0]
         values = treeview.item(selected_item, "values")
         new_title = askstring("Editar título", "Nuevo título:", initialvalue=values[0])
-        new_category = askstring("Editar categoría", "Nuevo categoría:", initialvalue=values[1])
+        new_category = askstring("Editar categoría", "Nueva categoría:", initialvalue=values[1])
         new_notes = askstring("Editar notas", "Nuevas notas:", initialvalue=values[2])
         new_date = askstring("Editar fecha", "Nueva fecha:", initialvalue=values[3])
         new_date = new_date if validate_date(new_date) else values[3]
@@ -31,6 +43,18 @@ def update_task(treeview):
             save_tasks(treeview) 
     except IndexError:
         messagebox.showwarning("Sin selección", "Por favor, selecciona una tarea para editar.")
+        
+def delete_task(treeview):
+    """Elimina la tarea seleccionada"""
+    try:
+        selected_item = treeview.selection()[0]
+        confirm = messagebox.askyesno("Confirmación", "¿Está seguro de querer elimnar esta tarea?")
+        if confirm:
+            treeview.delete(selected_item)
+            save_tasks(treeview)
+    except IndexError:
+        messagebox.showwarning("Sin selección", "Por favor, selecciona una tarea para eliminar.")
+
 
 def configure_styles():
     """Configura los estilos visuales de la interfaz."""
@@ -50,8 +74,11 @@ def create_widgets(root, add_task, update_task, delete_task):
     main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
     # Lista de tareas
-    task_frame = tk.Frame(main_frame, bg=Colors.BACKGROUND.value)
+    task_frame = tk.Frame(main_frame, bg=Colors.BACKGROUND.value, height=100)
     task_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=10)
+
+    title_list = tk.Label(task_frame, text="Lista de Tareas", font=Fonts.TITLE.value, bg=Colors.BACKGROUND.value, fg=Colors.TEXT.value)
+    title_list.pack(anchor="w", pady=5)
 
     columns = ("Título", "Categoría", "Notas", "Fecha")
     treeview = ttk.Treeview(task_frame, columns=columns, show="headings", height=20)
@@ -75,6 +102,9 @@ def create_widgets(root, add_task, update_task, delete_task):
     # Formulario para añadir tareas
     form_frame = tk.Frame(main_frame, bg=Colors.BACKGROUND.value)
     form_frame.pack(side=tk.RIGHT, fill=tk.BOTH, padx=10, pady=10)
+
+    title_form = tk.Label(form_frame, text="Agregar Tarea", font=Fonts.TITLE.value, bg=Colors.BACKGROUND.value, fg=Colors.TEXT.value)
+    title_form.pack(anchor="w", pady=5)
 
     form_entries = {}
     for label_text, key in [("Título:", "titulo"), ("Categoría:", "categoria"), ("Notas:", "notas"), ("Fecha (dd/mm):", "fecha")]:
