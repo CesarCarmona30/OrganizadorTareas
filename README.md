@@ -43,7 +43,7 @@ Asegúrate de tener lo siguiente instalado en tu sistema:
 
 ```bash
   OrganizadorTareas/
-  ├── main.py              # Punto de entrada de la aplicación
+  ├── app.py              # Punto de entrada de la aplicación
   ├── gui/                 # Componentes de la interfaz de usuario
   │   ├── styles.py        # Colores, fuentes y estilos
   │   ├── ui.py            # Configuración de diseño y widgets
