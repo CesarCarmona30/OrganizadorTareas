@@ -22,18 +22,23 @@ Asegúrate de tener lo siguiente instalado en tu sistema:
 
    ```bash
    git clone https://github.com/CesarCarmona30/OrganizadorTareas.git
+   ```
+
+2. Navega hasta el directorio
+
+   ```
    cd OrganizadorTareas
    ```
 
-2. (Opcional) Verifica que las dependencias estén instaladas (no se necesitan paquetes externos).
+3. (Opcional) Verifica que las dependencias estén instaladas (no se necesitan paquetes externos).
 
-3. Navega hasta el directorio del proyecto
+4. Navega hasta el directorio del proyecto
 
    ```bash
    cd Project
    ```
 
-4. Ejecuta la aplicación:
+5. Ejecuta la aplicación:
 
    ```bash
    python app.py
