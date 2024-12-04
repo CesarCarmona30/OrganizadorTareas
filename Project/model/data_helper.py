@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from tkinter import messagebox
 
-FILE_NAME = "./Project/data/tasks.json"
+FILE_NAME = "./Project/db/data.json"
 
 def validate_date(date):
     """Verifica que la fecha tenga el formato correcto (dd/mm)."""
@@ -12,7 +12,7 @@ def validate_date(date):
     except ValueError:
         return False
 
-def read_tasks(treeview):
+def read_data(treeview):
     """Carga las tareas desde el archivo JSON."""
     try:
         with open(FILE_NAME, "r", encoding="utf-8") as file:
@@ -26,7 +26,7 @@ def read_tasks(treeview):
     except (FileNotFoundError, json.JSONDecodeError):
         pass
 
-def save_tasks(treeview):
+def save_data(treeview):
     """Guarda las tareas en el archivo JSON."""
     tasks = []
     for item_id in treeview.get_children():

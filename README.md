@@ -43,15 +43,15 @@ Asegúrate de tener lo siguiente instalado en tu sistema:
 
 ```bash
   OrganizadorTareas/
-  ├── app.py              # Punto de entrada de la aplicación
-  ├── gui/                 # Componentes de la interfaz de usuario
-  │   ├── styles.py        # Colores, fuentes y estilos
-  │   ├── ui.py            # Configuración de diseño y widgets
-  ├── core/                # Funcionalidad principal y lógica
-  │   └── tasks.py         # Validación de tareas, guardado y carga
-  ├── data/                # Almacenamiento persistente
-  │   └── tasks.json       # Archivo JSON para almacenar tareas
-  └── README.md            # Documentación del proyecto
+  ├── app.py                # Punto de entrada de la aplicación
+  ├── db/                   # Dir: Almacenamiento persistente
+  │   └── data.json         # Archivo JSON para almacenar tareas
+  ├── model/                # Dir: Funcionalidad principal para los datos
+  │   └── data_helper.py    # Validación de fechas, guardado y carga
+  ├── view/                 # Dir: Componentes de la interfaz de usuario
+  │   ├── styles.py         # Colores y fuentes
+  │   ├── ui_controller.py  # Configuración de diseño, widgets y respuesta
+  └── README.md             # Documentación del proyecto
 ```
 
 ## Uso
@@ -65,9 +65,6 @@ Asegúrate de tener lo siguiente instalado en tu sistema:
 - Eliminar una Tarea:
   Selecciona una tarea de la lista y haz clic en "Delete" para eliminarla.
 
-- Filtrar Tareas:
-  Usa el menú desplegable de categorías para filtrar las tareas.
-
 ## Resolución de Problemas
 
 Si la aplicación no se inicia:
@@ -79,4 +76,4 @@ Si la aplicación no se inicia:
   python -m tkinter
   ```
 
-- Si el archivo JSON (tasks.json) está ausente o corrupto, elimínalo y reinicia la aplicación.
+- Si el archivo JSON (data.json) está ausente o corrupto, elimínalo y reinicia la aplicación.

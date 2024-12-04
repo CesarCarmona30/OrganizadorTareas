@@ -1,14 +1,14 @@
 import tkinter as tk
-from core.tasks import read_tasks
-from gui.styles import Colors
-from gui.ui import configure_styles, create_widgets, update_task, delete_task, create_task
+import view
+from model.data_helper import read_data
+from view.ui_controller import configure_styles, create_widgets, update_task, delete_task, create_task
 
 # Punto de entrada para el programa 
 def main():
     root = tk.Tk()
     root.title("Organizador de tareas")
     root.geometry("1000x580")
-    root.configure(bg=Colors.BACKGROUND.value)
+    root.configure(bg=view.styles.Colors.BACKGROUND.value)
 
     configure_styles()
     treeview = create_widgets(
@@ -18,7 +18,7 @@ def main():
         delete_task
     )
 
-    read_tasks(treeview)
+    read_data(treeview)
 
     root.mainloop()
 

@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.simpledialog import askstring
-from gui.styles import Colors, Fonts, Categories
-from core.tasks import save_tasks, validate_date
+from view.styles import Colors, Fonts, Categories
+from model.data_helper import save_data, validate_date
 
 def create_task(entries, treeview):
     """Crea y añade una nueva tarea a la lista."""
@@ -25,7 +25,7 @@ def create_task(entries, treeview):
             entry.delete("1.0", tk.END)
         else:
             entry.delete(0, tk.END)
-    save_tasks(treeview)
+    save_data(treeview)
 
 def update_task(treeview):
     """Editar la tarea seleccionada."""
@@ -40,7 +40,7 @@ def update_task(treeview):
 
         if new_title and new_category and new_date:
             treeview.item(selected_item, values=(new_title, new_category, new_notes, new_date))
-            save_tasks(treeview) 
+            save_data(treeview) 
     except IndexError:
         messagebox.showwarning("Sin selección", "Por favor, selecciona una tarea para editar.")
         
@@ -51,7 +51,7 @@ def delete_task(treeview):
         confirm = messagebox.askyesno("Confirmación", "¿Está seguro de querer elimnar esta tarea?")
         if confirm:
             treeview.delete(selected_item)
-            save_tasks(treeview)
+            save_data(treeview)
     except IndexError:
         messagebox.showwarning("Sin selección", "Por favor, selecciona una tarea para eliminar.")
 
